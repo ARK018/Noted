@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import AuthNavbar from "../components/AuthNavbar";
 import { useAuth } from "../lib/context/AuthContext";
 
