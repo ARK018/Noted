@@ -33,10 +33,8 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex w-full h-screen bg-[#fffffb]">
-      {/* <button onClick={handleLogoutClick}>LogOut</button>
-      <button onClick={getAccountDetails}>User Details</button> */}
-      <div className="flex flex-col justify-between items-center bg-[#f8f8ec] border-r border-gray-300 px-4 py-6 h-screen">
+    <div className="flex w-full h-screen relative bg-[#fffffb]">
+      <div className="flex flex-col justify-between items-center h-screen top-0  sticky bg-[#f8f8ec] border-r border-gray-300 px-4 py-6">
         <div className="">
           <svg
             width="29"
