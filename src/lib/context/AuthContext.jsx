@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const registerUser = async (userInfo) => {
+    setLoading(true);
     try {
       await account.create(
         ID.unique(),
@@ -29,6 +30,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.error("Register Error:", error);
     }
+    setLoading(false);
   };
 
   const loginUser = async (userInfo) => {
@@ -51,6 +53,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logoutUser = async () => {
+    setLoading(true);
     try {
       await account.deleteSession("current");
       setUser(null);
@@ -60,6 +63,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.error("Logout Error:", error);
     }
+    setLoading(false);
   };
 
   const checkUserStatus = async () => {

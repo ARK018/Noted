@@ -35,6 +35,14 @@ const DailyTasks = ({ refresh, setRefresh }) => {
           ]),
         ]
       );
+
+      // Populate completedNotes state with the completion status of notes
+      const initialCompletedNotes = response.documents.reduce((acc, note) => {
+        acc[note.$id] = note.completed || false;
+        return acc;
+      }, {});
+
+      setCompletedNotes(initialCompletedNotes);
       setNotes(response.documents);
     } catch (error) {
       console.error("Error fetching notes:", error);
@@ -56,11 +64,48 @@ const DailyTasks = ({ refresh, setRefresh }) => {
     }
   };
 
+  const handleComplete = async (noteId) => {
+    try {
+      await databases.updateDocument(
+        import.meta.env.VITE_APPWRITE_DATABASE_ID,
+        import.meta.env.VITE_APPWRITE_COLLECTION_ID_NOTES,
+        noteId,
+        {
+          completed: true,
+        }
+      );
+      setRefresh((prev) => !prev);
+    } catch (error) {
+      console.error("Note Complete Error:", error);
+    }
+  };
+
+  const handleUncomplete = async (noteId) => {
+    try {
+      await databases.updateDocument(
+        import.meta.env.VITE_APPWRITE_DATABASE_ID,
+        import.meta.env.VITE_APPWRITE_COLLECTION_ID_NOTES,
+        noteId,
+        {
+          completed: false,
+        }
+      );
+      setRefresh((prev) => !prev);
+    } catch (error) {
+      console.error("Note Uncomplete Error:", error);
+    }
+  };
+
   const toggleCompletion = (noteId) => {
     setCompletedNotes((prev) => ({
       ...prev,
       [noteId]: !prev[noteId],
     }));
+    if (!completedNotes[noteId]) {
+      handleComplete(noteId);
+    } else {
+      handleUncomplete(noteId);
+    }
   };
 
   return (
@@ -73,32 +118,30 @@ const DailyTasks = ({ refresh, setRefresh }) => {
           notes.map((note) => (
             <div
               key={note.$id}
-              className="group flex items-center justify-between p-3 my-2 rounded-md border border-gray-200"
+              className="group flex items-center justify-between p-3 my-2 rounded-md border border-gray-200 w-full cursor-pointer"
+              onClick={() => toggleCompletion(note.$id)}
             >
               <div className="flex items-center justify-between w-full">
-                <div
-                  onClick={() => toggleCompletion(note.$id)}
-                  className="flex items-center space-x-2 w-full cursor-pointer"
-                >
+                <div className="flex items-center space-x-2 w-full cursor-pointer">
                   {/* Custom checkbox */}
                   <div
                     className={`flex justify-center items-center border-2 rounded-full w-5 h-5 ${
                       completedNotes[note.$id]
-                        ? "border-green-700"
+                        ? "border-[#c4e456]"
                         : "border-gray-300"
                     }`}
                   >
                     <div
                       className={`w-3 h-3 rounded-full ${
                         completedNotes[note.$id]
-                          ? "bg-green-700"
-                          : "border-2 border-gray-300"
+                          ? "bg-[#c4e456]"
+                          : "border-none"
                       }`}
                     ></div>
                   </div>
                   {/* Note content with conditional strikethrough */}
                   <p
-                    className={` relative ${
+                    className={`mt-[2px] relative ${
                       completedNotes[note.$id]
                         ? "line-through-animated text-gray-500"
                         : ""
@@ -124,7 +167,9 @@ const DailyTasks = ({ refresh, setRefresh }) => {
             </div>
           ))
         ) : (
-          <div>No tasks for today</div>
+          <div className="w-full mt-6 flex justify-center">
+            No tasks for today!
+          </div>
         )}
       </div>
     </div>
