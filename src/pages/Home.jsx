@@ -22,9 +22,9 @@ const Home = () => {
   };
 
   return (
-    <div className="">
+    <div>
       <Navbar />
-      <div className="w-full h-full mx-auto flex flex-col items-center">
+      <div className="bg-[#fffffb] w-full h-full mx-auto flex flex-col items-center">
         <div className=" max-w-[800px] my-14">
           <h1 className="relative text-4xl text-center tracking-wide leading-relaxed">
             Welcome to Noted

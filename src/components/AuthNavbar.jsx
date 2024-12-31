@@ -20,7 +20,7 @@ const AuthNavbar = () => {
   const text = isSignInPage ? "Sign Up" : "Sign In";
 
   return (
-    <div className="w-full h-16 flex justify-between items-center px-12 border border-black/5">
+    <div className="bg-[#fffffb] w-full h-16 flex justify-between items-center px-12 border border-black/5">
       <div
         onClick={handleHomeClick}
         className="flex items-center justify-center gap-2 cursor-pointer"

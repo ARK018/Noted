@@ -24,7 +24,7 @@ const SignUp = () => {
   return (
     <div>
       <AuthNavbar />
-      <div className="flex justify-center items-center w-full h-[calc(100vh-64px)]">
+      <div className="bg-[#fffffb] flex justify-center items-center w-full h-[calc(100vh-64px)]">
         <div className="flex flex-col items-center justify-center w-1/2 h-full px-[180px]">
           <div className="items-start pb-8 w-full">
             <h1 className="font-overpass text-3xl text-left tracking-[5%]">
