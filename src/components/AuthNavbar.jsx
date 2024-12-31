@@ -26,8 +26,8 @@ const AuthNavbar = () => {
         className="flex items-center justify-center gap-2 cursor-pointer"
       >
         <svg
-          width="28"
-          height="28"
+          width="29"
+          height="29"
           viewBox="0 0 66 64"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

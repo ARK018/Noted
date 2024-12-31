@@ -68,6 +68,7 @@ const AddNotes = ({ setRefresh }) => {
       setBody("");
       setDate(null);
       setPriority(false);
+      setIsClicked(false);
       setRefresh((prev) => !prev);
     } catch (error) {
       console.error("Note Add Error:", error);
@@ -81,7 +82,7 @@ const AddNotes = ({ setRefresh }) => {
   };
 
   return (
-    <div className="flex justify-between items-center w-full bg-[#f8f8ec] p-[13px] rounded-lg">
+    <div className="flex justify-between items-center w-full bg-[#f8f8ec] p-[13px] rounded-lg mt-2">
       <div className="flex items-center space-x-2 w-full">
         {/* Custom checkbox */}
         <div className="flex justify-center items-center border-2 rounded-full w-5 h-5 border-gray-300"></div>

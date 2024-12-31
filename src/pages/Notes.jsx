@@ -81,6 +81,8 @@ const Notes = () => {
   };
 
   const handleDelete = async (noteId) => {
+    setNotes((prevNotes) => prevNotes.filter((note) => note.$id !== noteId));
+
     try {
       await databases.deleteDocument(
         import.meta.env.VITE_APPWRITE_DATABASE_ID,
@@ -146,7 +148,7 @@ const Notes = () => {
       {/* Main Area */}
       <div className="px-12 py-6 w-full max-w-[1020px]">
         <div className="flex flex-col gap-1 justify-start">
-          <h1 className="text-3xl">
+          <h1 className="-ml-[3px] text-3xl">
             {getGreeting()}, {user.name}
           </h1>
           <p className="text-sm text-gray-500">It's {getFormattedDate()}</p>
@@ -217,9 +219,7 @@ const Notes = () => {
                     </div>
                   ))
               ) : (
-                <div className="w-full mt-6 flex justify-center">
-                  Add some tasks
-                </div>
+                ""
               )}
             </div>
           </div>

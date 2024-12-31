@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../lib/context/AuthContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   const handleHomeClick = () => {
     navigate("/");
@@ -10,6 +12,18 @@ const Navbar = () => {
   const handleSignInClick = () => {
     navigate("/signin");
   };
+
+  const handleDashboardClick = () => {
+    const selected = localStorage.getItem("selected");
+    if (selected === "kanban") {
+      localStorage.setItem("selected", "notes");
+      navigate("/dashboard/notes");
+    } else {
+      navigate("/dashboard/notes");
+    }
+    console.log(selected);
+  };
+
   return (
     <div className="w-full h-16 flex justify-between items-center px-12 border border-black/5">
       <div
@@ -17,8 +31,8 @@ const Navbar = () => {
         className="flex items-center justify-center gap-2 cursor-pointer"
       >
         <svg
-          width="28"
-          height="28"
+          width="29"
+          height="29"
           viewBox="0 0 66 64"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -34,12 +48,23 @@ const Navbar = () => {
         <h1 className="font-overpass text-base tracking-[5%] mt-1">NOTED</h1>
       </div>
 
-      <button
-        onClick={handleSignInClick}
-        className="flex items-center px-6 py-2 rounded-full text-white bg-black hover:bg-black/80 transition-colors"
-      >
-        <p className="text-white font-medium text-base">Sign In</p>
-      </button>
+      {user ? (
+        <button
+          onClick={handleDashboardClick}
+          className="flex items-center justify-center px-5 py-[5px] rounded-full text-white bg-black hover:bg-black/80 transition-colors"
+        >
+          <p className="font-overpass mt-[2px] text-white font-medium text-base">
+            Dashboard
+          </p>
+        </button>
+      ) : (
+        <button
+          onClick={handleSignInClick}
+          className="flex items-center justify-center px-6 py-[5px] rounded-full bg-black hover:bg-black/80 transition-colors"
+        >
+          <p className="text-white font-medium text-base">Sign In</p>
+        </button>
+      )}
     </div>
   );
 };

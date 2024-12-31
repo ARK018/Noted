@@ -3,11 +3,11 @@ import { Rocket } from "lucide-react";
 
 const KanbanComingSoon = () => {
   const [buttonText, setButtonText] = useState("Notify Me");
-  const [isNotified, setIsNotified] = useState(false);
+  const [notify, setNotify] = useState(false);
 
   const handleNotifyClick = () => {
-    setButtonText("You're on the list!");
-    setIsNotified(true);
+    localStorage.setItem("Notify", "true");
+    setNotify(true);
   };
 
   return (
@@ -23,15 +23,22 @@ const KanbanComingSoon = () => {
         stages of development. Soon you'll be organizing tasks with unparalleled
         efficiency.
       </p>
-      <div className="mt-12">
-        <button
-          onClick={handleNotifyClick}
-          className={`px-8 py-3 bg-[#c4e456] text-gray-800 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl ${
-            isNotified ? "cursor-not-allowed" : "hover:bg-[#b3d345]"
-          }`}
-        >
-          {buttonText}
-        </button>
+      <div className="mt-6">
+        {localStorage.getItem("Notify") ? (
+          <button
+            className="px-8 py-3 bg-[#ebffa8] text-[#000000] rounded-full text-lg font-semibold"
+            disabled
+          >
+            You're on the list!
+          </button>
+        ) : (
+          <button
+            className="px-8 py-3 bg-[#c4e456] hover:bg-[#b3d345] text-gray-800 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+            onClick={handleNotifyClick}
+          >
+            Notify Me
+          </button>
+        )}
       </div>
       <div className="absolute bottom-0 left-[68px] right-0 h-16 bg-gradient-to-t from-[#c4e456] to-transparent" />
     </div>
@@ -39,3 +46,6 @@ const KanbanComingSoon = () => {
 };
 
 export default KanbanComingSoon;
+// className={`px-8 py-3 bg-[#c4e456] text-gray-800 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl ${
+//   isNotified ? "cursor-not-allowed" : "hover:bg-[#b3d345]"
+// }`}

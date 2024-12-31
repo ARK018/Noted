@@ -10,43 +10,48 @@ export const AuthContext = createContext();
 // Create the AuthProvider component
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
-
+  const [loading, setLoading] = useState(true); // Initial loading state
   const navigate = useNavigate();
+
   useEffect(() => {
-    checkUserStatus();
+    checkUserStatus(); // Check user status on component mount
   }, []);
 
   const registerUser = async (userInfo) => {
     setLoading(true);
     try {
+      // Create a new account
       await account.create(
         ID.unique(),
         userInfo.email,
         userInfo.password,
         userInfo.name
       );
+      // Automatically log in the user after registration
       await loginUser(userInfo);
     } catch (error) {
-      console.error("Register Error:", error);
+      console.error("Register Error:", error.message);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const loginUser = async (userInfo) => {
     setLoading(true);
     try {
+      // Create a session with email and password
       await account.createEmailPasswordSession(
         userInfo.email,
         userInfo.password
       );
-      let accountDetails = await account.get();
+      const accountDetails = await account.get();
       setUser(accountDetails);
+
       // Store user details in localStorage
       localStorage.setItem("userSession", JSON.stringify(accountDetails));
       navigate("/dashboard/notes", { replace: true });
     } catch (error) {
-      console.error("Login Error:", error);
+      console.error("Login Error:", error.message);
     } finally {
       setLoading(false);
     }
@@ -57,28 +62,31 @@ export const AuthProvider = ({ children }) => {
     try {
       await account.deleteSession("current");
       setUser(null);
+
       // Clear localStorage on logout
       localStorage.removeItem("userSession");
-      navigate("/signin");
+      navigate("/");
     } catch (error) {
-      console.error("Logout Error:", error);
+      console.error("Logout Error:", error.message);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const checkUserStatus = async () => {
     setLoading(true);
     try {
-      // Check localStorage first
       const savedSession = localStorage.getItem("userSession");
       if (savedSession) {
-        // Verify the session is still valid with Appwrite
+        // Verify the session with Appwrite
         const accountDetails = await account.get();
         setUser(accountDetails);
+      } else {
+        setUser(null);
       }
     } catch (error) {
-      // If session is invalid, clear localStorage
-      localStorage.removeItem("userSession");
+      console.error("Session Check Error:", error.message);
+      localStorage.removeItem("userSession"); // Clear invalid session
       setUser(null);
     } finally {
       setLoading(false);

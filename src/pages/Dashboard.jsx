@@ -19,6 +19,10 @@ const Dashboard = () => {
     }
   }, []);
 
+  const handleHomeClick = () => {
+    navigate("/");
+  };
+
   const handleLogoutClick = async () => {
     logoutUser();
     localStorage.removeItem("selected");
@@ -41,10 +45,10 @@ const Dashboard = () => {
   return (
     <div className="flex w-full  relative bg-[#fffffb]">
       <div className="flex flex-col justify-between items-center h-screen top-0 sticky bg-[#f8f8ec] border-r border-gray-300 px-4 py-6">
-        <div className="">
+        <div onClick={handleHomeClick} className="cursor-pointer">
           <svg
             width="29"
-            height="28"
+            height="29"
             viewBox="0 0 66 64"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
