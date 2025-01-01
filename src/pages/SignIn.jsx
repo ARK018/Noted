@@ -10,15 +10,41 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [mailError, setMailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [error, setError] = useState("");
 
   const { user, loginUser } = useAuth();
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePassword = (password) => {
+    return password.length >= 8;
+  };
+
   const handleSignIn = async (e) => {
     e.preventDefault();
+    setError("");
+    setMailError("");
+    setPasswordError("");
+
+    // Validate email
+    if (!validateEmail(email)) {
+      setMailError("Please enter a valid email address");
+      return;
+    }
+
+    // Validate password
+    if (!validatePassword(password)) {
+      setPasswordError("Password must be at least 8 characters long");
+      return;
+    }
 
     const userInfo = { email, password };
-    loginUser(userInfo);
+    await loginUser(userInfo);
   };
 
   return (
@@ -55,6 +81,9 @@ const SignIn = () => {
                   placeholder="john@gmail.com"
                   className="border-b border-gray-300 focus:outline-none pl py-2 "
                 />
+                {mailError && (
+                  <p className="text-red-500 text-sm">{mailError}</p>
+                )}
               </div>
               <div className="relative flex flex-col w-full">
                 <label
@@ -82,6 +111,9 @@ const SignIn = () => {
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
+                {passwordError && (
+                  <p className="text-red-500 text-sm">{passwordError}</p>
+                )}
               </div>
               <button
                 onClick={handleSignIn}
@@ -89,6 +121,7 @@ const SignIn = () => {
               >
                 Sign In
               </button>
+              {error && <p className="text-red-500 text-sm">{error}</p>}
             </form>
           </div>
         </div>

@@ -52,6 +52,7 @@ export const AuthProvider = ({ children }) => {
       navigate("/dashboard/notes", { replace: true });
     } catch (error) {
       console.error("Login Error:", error.message);
+      alert("Invalid email or password");
     } finally {
       setLoading(false);
     }
