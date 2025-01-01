@@ -25,16 +25,16 @@ const Home = () => {
     <div>
       <Navbar />
       <div className="bg-[#fffffb] w-full h-full mx-auto flex flex-col items-center">
-        <div className=" max-w-[800px] my-14">
-          <h1 className="relative text-4xl text-center tracking-wide leading-relaxed">
+        <div className="flex flex-col gap-3 max-w-[800px] my-20">
+          <h1 className="relative font-semibold text-4xl text-center tracking-tight leading-none">
             Welcome to Noted
-            <svg
-              width="283"
-              height="60"
+            {/* <svg
+              width="120"
+              height="80"
               viewBox="0 0 283 157"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="absolute top-14 left-[65%] transform -translate-x-1/2 -translate-y-1/2"
+              className="absolute top-[86px] left-[75%] transform -translate-x-1/2 -translate-y-1/2"
             >
               <path
                 d="M60.8446 104.681C118.785 87.8437 178.301 81.6769 238.205 87.9731"
@@ -48,10 +48,17 @@ const Home = () => {
                 strokeWidth="10"
                 strokeLinecap="round"
               />
-            </svg>
-            <br /> Organize, Prioritize, and Stay on Track
+            </svg> */}
+            <br /> Organize, Prioritize, and{" "}
+            <span
+              className="relative inline-block border-2 p-1 rounded-lg border-[#C4E456] rotate-[-1.8deg] "
+              // className="relative inline-block before:z-0
+              //  before:content[''] before:absolute before:inset-0 before:bg-[#C4E456]/10 text-[#C4E456]"
+            >
+              Stay on Track
+            </span>
           </h1>
-          <p className="text-center text-gray-600 mt-2">
+          <p className="text-center text-xl leading-normal font-light text-gray-600 mt-2">
             Your ultimate tool for managing notes and maximizing productivity.
             Effortlessly capture your ideas, prioritize tasks, and set deadlines
             with our user-friendly and intuitive platform.
@@ -59,7 +66,7 @@ const Home = () => {
           <div className="flex justify-center gap-4 mt-6">
             <button
               onClick={handleSignupClick}
-              className="px-6 py-2 bg-black text-white rounded-full font-semibold text-base hover:bg-black/80 transition-colors"
+              className="px-6 py-2 bg-[#C4E456] text-black rounded-full font-semibold text-base hover:bg-[#c2de65] transition-colors"
             >
               Get Started
             </button>
