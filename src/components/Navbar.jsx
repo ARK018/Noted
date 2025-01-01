@@ -53,9 +53,7 @@ const Navbar = () => {
           onClick={handleDashboardClick}
           className="flex items-center justify-center px-6 py-[5px] bg-transparent text-black border-2 rounded-full font-semibold text-base hover:bg-black/5 transition-colors"
         >
-          <p className="font-overpass mt-[2px] text-black font-medium text-base">
-            Dashboard
-          </p>
+          <p className=" text-black font-medium text-base">Dashboard</p>
         </button>
       ) : (
         <button
