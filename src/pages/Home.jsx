@@ -25,8 +25,8 @@ const Home = () => {
     <div>
       <Navbar />
       <div className="bg-[#fffffb] w-full h-full mx-auto flex flex-col items-center">
-        <div className="flex flex-col gap-3 max-w-[800px] my-20">
-          <h1 className="relative font-semibold text-4xl text-center tracking-tight leading-none">
+        <div className="flex flex-col gap-3 max-w-[800px] my-20 px-6 md:px-12">
+          <h1 className="relative font-semibold text-4xl text-center tracking-tight leading-tight md:leading-none">
             Welcome to Noted
             {/* <svg
               width="120"

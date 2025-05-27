@@ -82,8 +82,8 @@ const AddNotes = ({ setRefresh }) => {
   };
 
   return (
-    <div className="flex justify-between items-center w-full bg-[#f8f8ec] p-[13px] rounded-lg mt-2">
-      <div className="flex items-center space-x-2 w-full">
+    <div className="flex flex-col sm:flex-row justify-between items-center w-full bg-[#f8f8ec] p-3 sm:p-[13px] rounded-lg mt-2 gap-2 sm:gap-0">
+      <div className="flex items-center space-x-2 w-full mb-2 sm:mb-0">
         {/* Custom checkbox */}
         <div className="flex justify-center items-center border-2 rounded-full w-5 h-5 border-gray-300"></div>
 
@@ -95,18 +95,18 @@ const AddNotes = ({ setRefresh }) => {
           value={body}
           onChange={(e) => setBody(e.target.value)}
           onKeyDown={handleKeyDown} // Listen for Enter key
-          className="font-overpass w-full mt-[2px] border-none bg-transparent shadow-none outline-none focus:border-none focus:ring-0"
+          className="font-overpass w-full mt-[2px] border-none bg-transparent shadow-none outline-none focus:border-none focus:ring-0 text-base sm:text-base"
         />
       </div>
 
       {/* Priority and Date */}
-      <div className="flex items-center space-x-2">
+      <div className="flex flex-row sm:flex-row items-center space-x-2 w-full sm:w-auto justify-end">
         <Popover open={isCalendarOpen} onOpenChange={handlePopoverClose}>
           <PopoverTrigger asChild>
             <Button
               variant={"outline"}
               className={cn(
-                "w-[240px] justify-start text-left font-normal",
+                "w-full sm:w-[180px] md:w-[240px] justify-start text-left font-normal text-xs sm:text-base py-2 sm:py-0",
                 !date && "text-muted-foreground"
               )}
             >
@@ -114,7 +114,7 @@ const AddNotes = ({ setRefresh }) => {
               {date ? format(date, "PPP") : <span>Pick a date</span>}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start">
+          <PopoverContent className="w-auto p-0 min-w-[220px]" align="start">
             <Calendar
               mode="single"
               selected={date}
