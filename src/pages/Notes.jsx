@@ -211,7 +211,7 @@ const Notes = () => {
                             </div>
                           ) : null}
                           <button
-                            className="opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                            className="opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                             onClick={() => handleDelete(note.$id)}
                           >
                             <TrashIcon className="h-5 w-5 text-red-500 hover:text-red-700" />
@@ -279,7 +279,7 @@ const Notes = () => {
                               </div>
                             ) : null}
                             <button
-                              className="opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                              className="opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                               onClick={() => handleDelete(note.$id)}
                             >
                               <TrashIcon className="h-5 w-5 text-red-500 hover:text-red-700" />

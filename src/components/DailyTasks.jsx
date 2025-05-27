@@ -161,7 +161,7 @@ const DailyTasks = ({ refresh, setRefresh }) => {
                   </div>
                 ) : null}
                 <button
-                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                  className="opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                   onClick={(e) => {
                     e.stopPropagation(); // Prevent click from propagating to the parent
                     handleDelete(note.$id);
