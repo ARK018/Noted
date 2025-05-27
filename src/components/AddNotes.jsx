@@ -82,10 +82,10 @@ const AddNotes = ({ setRefresh }) => {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row justify-between items-center w-full bg-[#f8f8ec] p-2 sm:p-3 rounded-lg mt-2 gap-2 sm:gap-0">
+    <div className="flex flex-col sm:flex-row justify-between items-center w-full bg-[#f8f8ec] p-3 sm:p-3 rounded-lg mt-2 gap-2 sm:gap-0">
       <div className="flex items-center space-x-2 w-full mb-2 sm:mb-0">
         {/* Custom checkbox */}
-        <div className="flex justify-center items-center border-2 rounded-full w-5 h-5 border-gray-300"></div>
+        <div className="flex justify-center items-center border-2 rounded-full w-5 h-5 flex-shrink-0 border-gray-300"></div>
 
         {/* Task Text */}
         <input

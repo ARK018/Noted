@@ -131,14 +131,14 @@ const DailyTasks = ({ refresh, setRefresh }) => {
               <div className="flex items-center space-x-2 w-full cursor-pointer">
                 {/* Custom checkbox */}
                 <div
-                  className={`flex justify-center items-center border-2 rounded-full w-5 h-5 ${
+                  className={`flex justify-center items-center border-2 rounded-full w-5 h-5 flex-shrink-0 ${
                     completedNotes[note.$id]
                       ? "border-[#c4e456]"
                       : "border-gray-300"
                   }`}
                 >
                   <div
-                    className={`w-3 h-3 rounded-full ${
+                    className={`w-3 h-3 rounded-full flex-shrink-0 ${
                       completedNotes[note.$id] ? "bg-[#c4e456]" : "border-none"
                     }`}
                   ></div>
