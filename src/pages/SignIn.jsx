@@ -50,18 +50,18 @@ const SignIn = () => {
   return (
     <div>
       <AuthNavbar />
-      <div className="bg-[#fffffb] flex justify-center items-center w-full h-[calc(100vh-64px)]">
-        <div className="flex flex-col items-center justify-center w-1/2 h-full px-[180px]">
+      <div className="bg-[#fffffb] flex flex-col md:flex-row justify-center items-center w-full h-[calc(100vh-64px)]">
+        <div className="flex flex-col items-center justify-center w-full md:w-1/2 h-full px-3 sm:px-8 md:px-[120px] py-8 md:py-0">
           <div className="items-start pb-8 w-full">
-            <h1 className="font-overpass text-3xl text-left tracking-[5%]">
+            <h1 className="font-overpass text-xl sm:text-2xl md:text-3xl text-left tracking-[5%]">
               NOTED
             </h1>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-xs sm:text-sm md:text-base">
               Join Us and Capture, Organize, and Elevate Your Ideas.
             </p>
           </div>
           <div className="flex flex-col w-full">
-            <form className="space-y-6">
+            <form className="space-y-4 sm:space-y-6">
               <div className="flex flex-col w-full">
                 <label
                   htmlFor="email"
@@ -125,11 +125,11 @@ const SignIn = () => {
             </form>
           </div>
         </div>
-        <div className="relative w-1/2 h-full">
+        <div className="relative w-full md:w-1/2 h-40 sm:h-64 md:h-full hidden md:block">
           <img
             src={auth}
             alt="auth-image"
-            className="absoute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover"
           />
         </div>
       </div>

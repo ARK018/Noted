@@ -20,7 +20,7 @@ const AuthNavbar = () => {
   const text = isSignInPage ? "Sign Up" : "Sign In";
 
   return (
-    <div className="bg-[#fffffb] w-full h-16 flex justify-between items-center px-12 border border-black/5">
+    <div className="bg-[#fffffb] w-full h-16 flex flex-col sm:flex-row justify-between items-center px-3 sm:px-8 md:px-12 border border-black/5 gap-1 sm:gap-0">
       <div
         onClick={handleHomeClick}
         className="flex items-center justify-center gap-2 cursor-pointer"
@@ -31,6 +31,7 @@ const AuthNavbar = () => {
           viewBox="0 0 66 64"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          className="w-7 h-7 sm:w-8 sm:h-8"
         >
           <path
             fillRule="evenodd"
@@ -40,14 +41,16 @@ const AuthNavbar = () => {
           />
         </svg>
 
-        <h1 className="font-overpass text-base tracking-[5%] mt-1">NOTED</h1>
+        <h1 className="font-overpass text-sm sm:text-lg tracking-[5%] mt-1">
+          NOTED
+        </h1>
       </div>
 
-      <p className="text-gray-600 text-base">
+      <p className="text-gray-600 text-xs sm:text-base text-right">
         {isSignInPage ? "Don't have an account" : "Already have an account"}{" "}
         <button
           onClick={handleClick}
-          className="text-green-600 text-base font-semibold cursor-pointer hover:underline underline-offset-auto"
+          className="text-green-600 text-xs sm:text-base font-semibold cursor-pointer hover:underline underline-offset-auto"
         >
           {text}
         </button>

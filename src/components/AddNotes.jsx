@@ -82,7 +82,7 @@ const AddNotes = ({ setRefresh }) => {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row justify-between items-center w-full bg-[#f8f8ec] p-3 sm:p-[13px] rounded-lg mt-2 gap-2 sm:gap-0">
+    <div className="flex flex-col sm:flex-row justify-between items-center w-full bg-[#f8f8ec] p-2 sm:p-3 rounded-lg mt-2 gap-2 sm:gap-0">
       <div className="flex items-center space-x-2 w-full mb-2 sm:mb-0">
         {/* Custom checkbox */}
         <div className="flex justify-center items-center border-2 rounded-full w-5 h-5 border-gray-300"></div>
@@ -95,7 +95,7 @@ const AddNotes = ({ setRefresh }) => {
           value={body}
           onChange={(e) => setBody(e.target.value)}
           onKeyDown={handleKeyDown} // Listen for Enter key
-          className="font-overpass w-full mt-[2px] border-none bg-transparent shadow-none outline-none focus:border-none focus:ring-0 text-base sm:text-base"
+          className="font-overpass w-full mt-[2px] border-none bg-transparent shadow-none outline-none focus:border-none focus:ring-0 text-sm sm:text-base"
         />
       </div>
 
@@ -106,7 +106,7 @@ const AddNotes = ({ setRefresh }) => {
             <Button
               variant={"outline"}
               className={cn(
-                "w-full sm:w-[180px] md:w-[240px] justify-start text-left font-normal text-xs sm:text-base py-2 sm:py-0",
+                "w-full sm:w-[140px] md:w-[180px] justify-start text-left font-normal text-xs sm:text-base py-2 sm:py-0",
                 !date && "text-muted-foreground"
               )}
             >
@@ -114,7 +114,10 @@ const AddNotes = ({ setRefresh }) => {
               {date ? format(date, "PPP") : <span>Pick a date</span>}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-0 min-w-[220px]" align="start">
+          <PopoverContent
+            className="w-auto p-0 min-w-[180px] sm:min-w-[220px]"
+            align="start"
+          >
             <Calendar
               mode="single"
               selected={date}

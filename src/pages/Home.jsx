@@ -25,8 +25,8 @@ const Home = () => {
     <div>
       <Navbar />
       <div className="bg-[#fffffb] w-full h-full mx-auto flex flex-col items-center">
-        <div className="flex flex-col gap-3 max-w-[800px] my-20 px-6 md:px-12">
-          <h1 className="relative font-semibold text-4xl text-center tracking-tight leading-tight md:leading-none">
+        <div className="flex flex-col gap-3 max-w-[800px] my-10 sm:my-16 md:my-20 px-3 sm:px-6 md:px-12 w-full">
+          <h1 className="relative font-semibold text-2xl sm:text-3xl md:text-4xl text-center tracking-tight leading-tight md:leading-none">
             Welcome to Noted
             {/* <svg
               width="120"
@@ -58,34 +58,36 @@ const Home = () => {
               Stay on Track
             </span>
           </h1>
-          <p className="text-center text-xl leading-normal font-light text-gray-600 mt-2">
+          <p className="text-center text-base sm:text-lg md:text-xl leading-normal font-light text-gray-600 mt-2">
             Your ultimate tool for managing notes and maximizing productivity.
             Effortlessly capture your ideas, prioritize tasks, and set deadlines
             with our user-friendly and intuitive platform.
           </p>
-          <div className="flex justify-center gap-4 mt-6">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6 w-full">
             <button
               onClick={handleSignupClick}
-              className="px-6 py-2 bg-[#C4E456] text-black rounded-full font-semibold text-base hover:bg-[#c2de65] transition-colors"
+              className="px-6 py-2 bg-[#C4E456] text-black rounded-full font-semibold text-base hover:bg-[#c2de65] transition-colors w-full sm:w-auto"
             >
               Get Started
             </button>
             <button
               onClick={handleLearnMore}
-              className="px-6 py-2 bg-transparent text-black border-2 rounded-full font-semibold text-base hover:bg-black/5 transition-colors"
+              className="px-6 py-2 bg-transparent text-black border-2 rounded-full font-semibold text-base hover:bg-black/5 transition-colors w-full sm:w-auto"
             >
               Learn More
             </button>
           </div>
-          <video
-            autoPlay={true}
-            loop={true}
-            muted={true}
-            className="w-full h-full mt-10 object-cover border rounded-lg shadow-lg"
-          >
-            <source src={noted_video} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <div className="w-full mt-6 md:mt-10">
+            <video
+              autoPlay={true}
+              loop={true}
+              muted={true}
+              className="w-full h-[180px] sm:h-[260px] md:h-[340px] lg:h-[400px] object-cover border rounded-lg shadow-lg"
+            >
+              <source src={noted_video} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
       </div>
     </div>

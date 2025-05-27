@@ -146,17 +146,19 @@ const Notes = () => {
   return (
     <div className="flex justify-center items-center w-full border-r border-black">
       {/* Main Area */}
-      <div className="px-12 py-6 w-full max-w-[1020px]">
+      <div className="px-6 sm:px-6 md:px-12 py-12 sm:py-6 w-full max-w-full md:max-w-[1020px]">
         <div className="flex flex-col gap-1 justify-start">
-          <h1 className="-ml-[3px] text-3xl">
+          <h1 className="-ml-[3px] text-2xl sm:text-3xl">
             {getGreeting()}, {user.name}
           </h1>
-          <p className="text-sm text-gray-500">It's {getFormattedDate()}</p>
+          <p className="text-xs sm:text-sm text-gray-500">
+            It's {getFormattedDate()}
+          </p>
           <DailyTasks refresh={refresh} setRefresh={setRefresh} />
         </div>
 
         {/*ALL Notes */}
-        <div className="text-md pt-6 ">
+        <div className="text-md pt-4 sm:pt-6 ">
           <p className="">All Tasks</p>
           <div className="">
             <AddNotes setRefresh={(val) => setRefresh(val)} />{" "}
@@ -226,7 +228,7 @@ const Notes = () => {
         </div>
         {/* Completed Notes */}
         {notes.filter((note) => note.completed).length > 0 ? (
-          <div className="text-md pt-6 ">
+          <div className="text-md pt-4 sm:pt-6 ">
             <p className="">Completed</p>
             <div className="">
               <div className="font-overpass">

@@ -2,13 +2,14 @@ import React from "react";
 
 const Loader = () => {
   return (
-    <div className="bg-[#fffffb] flex flex-col justify-center items-center w-full h-screen gap-4">
+    <div className="bg-[#fffffb] flex flex-col justify-center items-center w-full h-screen gap-4 px-2 sm:px-4">
       <svg
-        width="320"
-        height="320"
+        width="120"
+        height="120"
         viewBox="0 0 469 469"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        className="w-24 h-24 sm:w-40 sm:h-40 md:w-60 md:h-60"
       >
         <path
           d="M16.0428 324.13L90.8608 323.414C91.9648 323.403 92.8518 322.499 92.8418 321.395C92.8308 320.29 91.8868 319.391 90.8228 319.414L18.0238 320.111V115.452C18.0238 114.348 17.1278 113.452 16.0238 113.452C14.9198 113.452 14.0238 114.348 14.0238 115.452V322.13C14.0018 323.211 14.9618 324.162 16.0428 324.13Z"
@@ -119,7 +120,7 @@ const Loader = () => {
           fill="black"
         />
       </svg>
-      <h1 className="font-overpass text-2xl">
+      <h1 className="font-overpass text-lg sm:text-xl md:text-2xl text-center">
         Hold tight, we're getting things ready for you!
       </h1>
     </div>

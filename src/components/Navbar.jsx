@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#fffffb] w-full h-16 flex justify-between items-center px-6 md:px-12 border border-black/5">
+    <div className="bg-[#fffffb] w-full h-16 flex justify-between items-center px-3 sm:px-6 md:px-12 border border-black/5">
       <div
         onClick={handleHomeClick}
         className="flex items-center justify-center gap-2 cursor-pointer"
@@ -36,6 +36,7 @@ const Navbar = () => {
           viewBox="0 0 66 64"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          className="w-7 h-7 sm:w-8 sm:h-8"
         >
           <path
             fillRule="evenodd"
@@ -45,22 +46,26 @@ const Navbar = () => {
           />
         </svg>
 
-        <h1 className="font-overpass text-base tracking-[5%] mt-1">NOTED</h1>
+        <h1 className="font-overpass text-sm sm:text-base tracking-[5%] mt-1">
+          NOTED
+        </h1>
       </div>
 
       {user ? (
         <button
           onClick={handleDashboardClick}
-          className="flex items-center justify-center px-6 py-[5px] bg-transparent text-black border-2 rounded-full font-semibold text-base hover:bg-black/5 transition-colors"
+          className="flex items-center justify-center px-4 sm:px-6 py-[5px] bg-transparent text-black border-2 rounded-full font-semibold text-sm sm:text-base hover:bg-black/5 transition-colors"
         >
-          <p className=" text-black font-medium text-base">Dashboard</p>
+          <p className="text-black font-medium text-sm sm:text-base">
+            Dashboard
+          </p>
         </button>
       ) : (
         <button
           onClick={handleSignInClick}
-          className="flex items-center justify-center px-6 py-[5px] bg-transparent text-black border-2 rounded-full font-semibold text-base hover:bg-black/5 transition-colors"
+          className="flex items-center justify-center px-4 sm:px-6 py-[5px] bg-transparent text-black border-2 rounded-full font-semibold text-sm sm:text-base hover:bg-black/5 transition-colors"
         >
-          <p className="text-black font-medium text-base">Sign In</p>
+          <p className="text-black font-medium text-sm sm:text-base">Sign In</p>
         </button>
       )}
     </div>

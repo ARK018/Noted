@@ -41,8 +41,8 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex w-full  relative bg-[#fffffb]">
-      <div className="flex flex-col justify-between items-center h-screen top-0 sticky bg-[#f8f8ec] border-r border-gray-300 px-4 py-6">
+    <div className="flex flex-col md:flex-row w-full relative bg-[#fffffb] min-h-screen">
+      <div className="flex flex-row md:flex-col justify-between items-center md:h-screen top-0 md:sticky bg-[#f8f8ec] border-r border-gray-300 px-6 sm:px-6 py-3 sm:py-6 w-full md:w-auto">
         <div onClick={handleHomeClick} className="cursor-pointer">
           <svg
             width="29"
@@ -61,7 +61,7 @@ const Dashboard = () => {
         </div>
 
         {/* Nav Links */}
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-row md:flex-col items-center gap-4 md:gap-6">
           <div
             className={`p-2 cursor-pointer ${
               selected === "notes" ? "bg-[#c4e456]" : "bg-transparent"
@@ -105,7 +105,7 @@ const Dashboard = () => {
         {/* User */}
         <LogOut
           onClick={handleLogoutClick}
-          className="text-[#374151] cursor-pointer hover:text-[#1e2632]"
+          className="text-[#374151] cursor-pointer hover:text-[#1e2632] mt-0 md:mt-4"
         />
       </div>
       <div className="flex justify-center items-center w-full ">

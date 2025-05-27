@@ -118,8 +118,8 @@ const DailyTasks = ({ refresh, setRefresh }) => {
   }
 
   return (
-    <div className="pt-9">
-      <p className="mb-2">Today's Tasks</p>
+    <div className="pt-6 sm:pt-9">
+      <p className="mb-2 text-sm sm:text-base">Today's Tasks</p>
       <div className="font-overpass">
         {notes.map((note) => (
           <div
